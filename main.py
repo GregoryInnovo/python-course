@@ -43,17 +43,28 @@ class Location(BaseModel):
         max_length=50,
     )
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "city": "Bogotá",
+                "state": "Some place",
+                "country": "MEX",
+            }
+        }
+
 
 class Person(BaseModel):
     first_name: str = Field(
         ..., 
         min_length=1,
         max_length=50,
+        example="Greg"
     )
     last_name: str = Field(
         ..., 
         min_length=1,
         max_length=50,
+        example="Mur",
     )
     age: int = Field(
         ..., 
@@ -64,6 +75,18 @@ class Person(BaseModel):
     # if the user dont send nothing the value is NULL
     hair_color: Optional[HairColor] = Field(default=None)
     is_married: Optional[bool] = Field(default=None)
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "first_name": "Nate",
+                "last_name": "Al",
+                "age": 33,
+                "email": ["na@gmail.com"],
+                "hair_color": "#964B00",
+                "is_married": False,
+            }
+        }
 
 
 class Card(BaseModel):
@@ -87,7 +110,16 @@ class Card(BaseModel):
     @property
     def expired(self) -> bool:
         return self.exp < date.today() 
-
+        
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "NATE",
+                "number": 1234567890123456,
+                "exp": date.today(),
+            }
+        }
 
 
 
