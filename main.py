@@ -43,6 +43,7 @@ class Location(BaseModel):
         max_length=50,
     )
 
+    # This class provide default values to the docs
     class Config:
         schema_extra = {
             "example": {
@@ -71,8 +72,9 @@ class Person(BaseModel):
         gt=0,
         le=115
     )
+    # Special validator to email 
     email: List[EmailStr]
-    # if the user dont send nothing the value is NULL
+    # if the user don't send nothing the value is NULL
     hair_color: Optional[HairColor] = Field(default=None)
     is_married: Optional[bool] = Field(default=None)
 
@@ -133,7 +135,7 @@ def home(): # path operation function
 def create_person(person: Person = Body(...)):
     return person
 
-# Validations: Query params
+# Validations: Query params, values in query are optional
 @app.get("/person/detail")
 def show_person(
     name: Optional[str] = Query(
@@ -142,16 +144,18 @@ def show_person(
         max_length=50,
         title="Person name",
         description="This is the person name. It's between 1 and 50 characters",
+        example="Ana",
     ),
     age: str = Query(
         ...,
         title="Person age",
         description="This is the person age. It's required",
+        example=24,
     ),
 ):
     return {name: age}
 
-# Validations: Path params
+# Validations: Path params, values in path are required
 @app.get("/person/detail/{person_id}")
 def show_person(
     person_id: int = Path(
@@ -159,6 +163,7 @@ def show_person(
         gt=0,
         title="Person id",
         description="This is the person id. It's required",
+        example=11,
     )
 ):
     return {person_id: "It exists!"}
@@ -171,6 +176,7 @@ def update_person(
         title= "Person ID",
         description= "This is the person id.",
         gt= 0,
+        example=11,
     ),
     person: Person = Body(...),
     location: Location = Body(...),
