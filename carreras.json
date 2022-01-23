@@ -1,0 +1,15 @@
+{
+  "_id": "61ecccc9e38f498ee6ccb2dd",
+  "nombre": "Carrera de Azure",
+  "descripcion": "En esta carrera aprenderas sobre Azure",
+  "cursos": [
+    {
+      "_id": "61ecccc9e38f498ee6ccb2ge",
+      "nombre": "Nombre del curso"
+    },
+    {
+      "_id": "61ecccc9e38f498ee6ccb2gt",
+      "nombre": "Nombre del curso"
+    }
+  ]
+}

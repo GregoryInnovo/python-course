@@ -1,0 +1,19 @@
+{
+  "_id": "61ecccc9e38f498ee6ccb2dig",
+  "nombre": "",
+  "descripcion": "",
+  "clases": [
+    {
+      "_id": "",
+      "order": 1,
+      "nombre": "",
+      "videos": ["url1"]
+    },
+    {
+      "_id": "",
+      "order": 1,
+      "nombre": "",
+      "videos": ["url1"]
+    }
+  ]
+}
