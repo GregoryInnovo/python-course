@@ -7,7 +7,7 @@ from . import config
 def create_app(test_config=None):
     # Create and configure the app
     app = Flask(__name__, instance_relative_config=True)
-    app.config['MONGO_URI']="mongodb://localhost"
+    app.config['MONGO_URI']="mongodb://localhost:27017/"
 
     if test_config is None:
         # app.config.from_pyfile('config.py', silent=True)
